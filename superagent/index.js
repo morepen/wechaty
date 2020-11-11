@@ -9,6 +9,28 @@ const config = require('../config');
 
 
 
+
+//返回智能聊天
+async function SmartChat(content) {
+    try{
+
+      var url = "http://api.qingyunke.com/api.php?key=free&appid=0&msg="+encodeURI(content);
+      let res = await superagent.req(url, "GET");
+      //console.log(res.text);
+      var _body=JSON.parse(res.text);
+      if(_body){
+        return _body.content;
+      }else{
+        return false;
+      }
+      
+
+    }catch(e){
+       return false;
+    }
+    
+
+}
 //生成短链接
 async function createShort(longurl) {
 
@@ -262,6 +284,32 @@ async function getEnglishOne() {
     console.log("获取接口失败", err);
   }
 }
+
+async function getWeather() { //获取墨迹天气
+  let MOJI_HOST='https://tianqi.moji.com/weather/china/';
+  let CITY='wuhan';
+  let LOCATION='pudong-new-district';
+  let url ='https://tianqi.moji.com/weather/china/hubei/hongshan-district';
+  let res = await superagent.req(url,'GET')
+  let $ = cheerio.load(res.text)
+  let weatherTips = $('.wea_tips em').text()
+  const today = $('.forecast .days').first().find('li');
+  let todayInfo = {
+    Day:$(today[0]).text().replace(/(^\s*)|(\s*$)/g, ""),
+    WeatherText:$(today[1]).text().replace(/(^\s*)|(\s*$)/g, ""),
+    Temp:$(today[2]).text().replace(/(^\s*)|(\s*$)/g, ""),
+    Wind:$(today[3]).find('em').text().replace(/(^\s*)|(\s*$)/g, ""),
+    WindLevel:$(today[3]).find('b').text().replace(/(^\s*)|(\s*$)/g, ""),
+    PollutionLevel:$(today[4]).find('strong').text().replace(/(^\s*)|(\s*$)/g, "")
+  }
+  let obj = {
+  weatherTips:weatherTips,
+  todayWeather:todayInfo.Day + ':' + todayInfo.WeatherText + '<br>' + '温度:' + todayInfo.Temp +  '<br>'
+    + todayInfo.Wind + todayInfo.WindLevel + '<br>' + '空气:' + todayInfo.PollutionLevel + '<br>'
+  }
+  return  obj
+}
+
 module.exports = {
   getOne,
   getSoup,
@@ -273,5 +321,7 @@ module.exports = {
   getGodReply,
   getEnglishOne,
   createShort,
-  getWenAn
+  getWenAn,
+  getWeather,
+  SmartChat
 };

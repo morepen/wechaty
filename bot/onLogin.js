@@ -16,7 +16,7 @@ async function onRoom(bot) {
 
   const time1 = "0 33 9 * * *";
   
-  schedule.setSchedule(time, async () => {
+  /*schedule.setSchedule(time, async () => {
   	console.log("定时开启");
     let today = await untils.formatDate(new Date()); //获取今天的日期
     let one = await superagent.getOne(); //获取每日一句
@@ -40,7 +40,7 @@ async function onRoom(bot) {
     const room = await bot.Room.find({ id:'24275089022@chatroom'});
     room.say(str);
    
-  });
+  });*/
 
 
 

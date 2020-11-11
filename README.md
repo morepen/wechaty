@@ -12,7 +12,7 @@
 ##思考
 之前也了解过wechaty，就想着是否可以做一个每天快下班提醒团队小伙伴，维护下工作日报。以及团队TL便捷获取团队所有日报的系统。不需要一个个复制；
 ##项目地址
-github:[https://github.com/morepen/wechaty](https://github.com/morepen/wechaty)
+github:[https://github.com/zzhoouxin/wechaty-bot](https://github.com/zzhoouxin/wechaty-bot)
 
 
 ##基础依赖

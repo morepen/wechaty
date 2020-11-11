@@ -10,8 +10,17 @@ module.exports = {
   WIKI_URL: 'http://wiki.xxxxx.com/pages/viewpage.action?pageId=', //wiki内容地址
   NAME: '小人头', //备注
   NICKNAME: '萝卜特', //微信网名
-  TOKEN: 'puppet_padplus_b7245eeb07c2c14d',
-  WEBROOM: '25326544394@chatroom',
-  shortKey: '5f1a8132b1b63c55182a9c09@ebd0ce296ecf65edea559a4412d69709', //生成短链接KEY
-  KEYWORDs:['本组','全部']
+  TOKEN: '**',
+  WEBROOM: '**',
+  shortKey: '**', //生成短链接KEY
+  KEYWORDs:['本组','全部'],
+   room: {
+    // 管理群组列表
+    roomList: {
+      // 群名(用于展示，最好是群名，可随意) : 群id(这个可不能随意)
+      测试: "**"
+    },
+    // 加入房间回复
+    roomJoinReply: `\n 你好，欢迎你的加入，请自觉遵守群规则，文明交流，最后，请向大家介绍你自己！ \n\n Hello, welcome to join, please consciously abide by the group rules, civilized communication, finally, please introduce yourself to everyone！😊`
+  },
 };
